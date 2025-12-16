@@ -1,0 +1,89 @@
+{
+  "name": "eager-eye",
+  "displayName": "EagerEye",
+  "description": "Static analysis for detecting N+1 queries in Rails applications",
+  "version": "1.0.1",
+  "publisher": "hamzagedikkaya",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamzagedikkaya/eager_eye_vscode"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "ruby",
+    "rails",
+    "n+1",
+    "performance",
+    "static analysis"
+  ],
+  "activationEvents": [
+    "onLanguage:ruby"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "eagerEye.analyze",
+        "title": "EagerEye: Analyze Current File"
+      },
+      {
+        "command": "eagerEye.analyzeWorkspace",
+        "title": "EagerEye: Analyze Workspace"
+      },
+      {
+        "command": "eagerEye.clearDiagnostics",
+        "title": "EagerEye: Clear Diagnostics"
+      }
+    ],
+    "configuration": {
+      "title": "EagerEye",
+      "properties": {
+        "eagerEye.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable EagerEye"
+        },
+        "eagerEye.analyzeOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run analysis on file save"
+        },
+        "eagerEye.gemPath": {
+          "type": "string",
+          "default": "eager_eye",
+          "description": "Path to eager_eye executable"
+        },
+        "eagerEye.enabledDetectors": {
+          "type": "array",
+          "default": [],
+          "description": "Specific detectors to enable (empty = all)"
+        },
+        "eagerEye.excludePatterns": {
+          "type": "array",
+          "default": ["**/spec/**", "**/test/**", "**/vendor/**"],
+          "description": "Glob patterns to exclude from analysis"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
