@@ -71,7 +71,15 @@ export class EagerEyeDiagnostics {
     const workspaceFolder = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
     const cwd = workspaceFolder || path.dirname(filePath);
 
-    const output = execSync(`${gemPath} "${filePath}" --format json --no-fail`, {
+    const config = vscode.workspace.getConfiguration('eagerEye');
+    const enabledDetectors = config.get<string[]>('enabledDetectors') || [];
+
+    let command = `${gemPath} "${filePath}" --format json --no-fail`;
+    if (enabledDetectors.length > 0) {
+      command += ` --only ${enabledDetectors.join(',')}`;
+    }
+
+    const output = execSync(command, {
       cwd,
       encoding: 'utf-8',
       timeout: 30000,
