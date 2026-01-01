@@ -2,7 +2,7 @@
   "name": "eager-eye",
   "displayName": "EagerEye",
   "description": "Static analysis for detecting N+1 queries in Rails applications",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "hamzagedikkaya",
   "icon": "images/icon.png",
   "repository": {
