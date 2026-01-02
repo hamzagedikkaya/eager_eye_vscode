@@ -2,7 +2,7 @@
   "name": "eager-eye",
   "displayName": "EagerEye",
   "description": "Static analysis for detecting N+1 queries in Rails applications",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "hamzagedikkaya",
   "icon": "images/icon.png",
   "repository": {
@@ -67,7 +67,11 @@
         },
         "eagerEye.excludePatterns": {
           "type": "array",
-          "default": ["**/spec/**", "**/test/**", "**/vendor/**"],
+          "default": [
+            "**/spec/**",
+            "**/test/**",
+            "**/vendor/**"
+          ],
           "description": "Glob patterns to exclude from analysis"
         }
       }

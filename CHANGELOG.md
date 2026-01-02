@@ -2,6 +2,11 @@
 
 All notable changes to EagerEye VS Code Extension will be documented in this file.
 
+## [1.0.4] - 2025-01-02
+
+### Changed
+- Optimized extension icon (1080x1080 → 256x256) reducing package size by ~92%
+
 ## [1.0.3] - 2025-01-01
 
 ### Added
